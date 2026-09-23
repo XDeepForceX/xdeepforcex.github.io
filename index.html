@@ -68,7 +68,6 @@
   .name-hint{font-size:11px;color:#7d90ab;min-height:14px;}
   .name-hint.error{color:#ff8b8b;}
 
-  /* ============ MAIN MENU LAYOUT ============ */
   #menu{padding:10px;gap:6px;}
   .menu-wrap{
     display:flex;gap:14px;align-items:flex-start;justify-content:center;
@@ -99,7 +98,6 @@
   .menu-left .name-row .lbl{font-size:10px;color:#8fa3bf;letter-spacing:1px;font-weight:normal;text-transform:uppercase;}
   .menu-left .name-row button{min-width:auto;padding:3px 8px;font-size:10px;letter-spacing:1px;}
 
-  /* ============ EXPANDABLE CUSTOMIZE PANEL ============ */
   .customize-toggle{width:100%;}
   .customize-panel{
     display:none;
@@ -162,23 +160,13 @@
   }
   .cp-color:hover{transform:scale(1.1);}
   .cp-color.selected{border-color:#fff;box-shadow:0 0 12px #fff;}
-  .cp-color.picked-button-color{border-color:#ffd23f !important;box-shadow:0 0 12px #ffd23f !important;}
 
-  /* Button color choice */
-  .cp-btncolor-row{
-    display:flex;gap:6px;flex-wrap:wrap;
-    background:rgba(0,0,0,.35);
-    padding:6px;border-radius:8px;
-  }
-
-  /* ============ MENU RIGHT (main buttons) ============ */
   .menu-right{
     display:flex;flex-direction:column;gap:8px;
     align-items:center;flex:1;min-width:240px;max-width:400px;
   }
   .menu-right button{width:100%;max-width:340px;min-width:unset;}
 
-  /* ============ SETTINGS ============ */
   #settings{background:radial-gradient(circle at 50% 40%, rgba(15,25,45,.98), rgba(5,8,12,.99));gap:8px;padding:12px;}
   .settings-wrap{display:flex;flex-direction:column;gap:10px;width:100%;max-width:700px;
     max-height:calc(100vh - 80px);overflow-y:auto;padding:6px;}
@@ -200,7 +188,6 @@
   .device-toggle button{min-width:unset;padding:6px 12px;font-size:11px;letter-spacing:1px;}
   .device-toggle button.active{background:linear-gradient(180deg,#2f6fbf,#1c4a86);border-color:#4ea1ff;color:#fff;}
 
-  /* TOUCH */
   #touchControls{position:absolute;inset:0;pointer-events:none;z-index:15;}
   #touchControls.hidden{display:none;}
   .joy-zone{position:absolute;pointer-events:auto;touch-action:none;
@@ -247,7 +234,6 @@
   .dragging{filter:brightness(1.5);
     box-shadow:0 0 0 4px #4dff8a, 0 0 40px rgba(77,255,138,.8) !important;z-index:100;}
 
-  /* Chat */
   #chatButton{position:absolute;left:10px;top:10px;z-index:22;
     width:42px;height:42px;border-radius:50%;min-width:unset;padding:0;
     background:linear-gradient(180deg,#6d3fbf,#4a2a80);border-color:#c77dff;color:#fff;font-size:18px;}
@@ -275,15 +261,6 @@
     display:grid;grid-template-columns:repeat(2,1fr);gap:4px;background:rgba(0,0,0,.4);}
   #chatQuick button{min-width:unset;padding:5px 4px;font-size:10px;border-radius:6px;
     background:rgba(50,30,80,.8);border-color:#6d3fbf;color:#fff;text-transform:none;}
-  .chat-bubble{position:absolute;pointer-events:none;z-index:18;
-    background:rgba(0,0,0,.85);color:#fff;padding:3px 9px;border-radius:12px;font-size:11px;
-    font-weight:bold;border:2px solid #c77dff;white-space:nowrap;
-    animation:floatUp 2.2s ease-out forwards;transform:translate(-50%,-100%);}
-  @keyframes floatUp{
-    0%{opacity:0;transform:translate(-50%,-90%) scale(.7);}
-    15%{opacity:1;transform:translate(-50%,-100%) scale(1);}
-    85%{opacity:1;transform:translate(-50%,-140%) scale(1);}
-    100%{opacity:0;transform:translate(-50%,-180%) scale(.9);}}
   #toastContainer{position:absolute;top:56px;right:10px;z-index:25;
     display:flex;flex-direction:column;gap:5px;pointer-events:none;max-width:240px;}
   .toast{background:rgba(10,15,25,.95);border:2px solid #4ea1ff;border-radius:10px;
@@ -296,7 +273,6 @@
   @keyframes toastOut{to{opacity:0;transform:translateX(40px);}}
   #lobbyBrowserList button{background:linear-gradient(180deg,#3fbf6f,#1c8649);border-color:#4dff8a;color:#fff;}
 
-  /* Kill feed */
   #killFeed{position:absolute;left:10px;bottom:10px;z-index:18;
     display:flex;flex-direction:column-reverse;gap:3px;max-width:300px;pointer-events:none;}
   .kill-msg{background:rgba(10,15,25,.85);border:1px solid #4ea1ff;border-radius:5px;
@@ -307,7 +283,6 @@
   @keyframes killIn{from{opacity:0;transform:translateX(-30px);}to{opacity:1;transform:translateX(0);}}
   @keyframes killOut{to{opacity:0;transform:translateX(-30px);}}
 
-  /* MVP */
   #mvpBoard{position:absolute;inset:0;background:rgba(0,0,0,.88);z-index:30;
     display:none;flex-direction:column;align-items:center;justify-content:center;padding:14px;overflow-y:auto;}
   #mvpBoard.show{display:flex;}
@@ -348,7 +323,6 @@
   .friend-list .fname{flex:1;font-family:monospace;}
   .friend-list button{padding:2px 6px;font-size:10px;min-width:auto;}
 
-  /* ============ ORIENTATION SPECIFIC ============ */
   @media (orientation: portrait){
     .menu-wrap{flex-direction:column;align-items:center;}
     .menu-left{width:100%;max-width:340px;}
@@ -621,19 +595,32 @@
 
 <script>
 /* =========================================================
-   SOLDIER ARENA — Ultimate v5
-   - Fixed multiplayer (reliable registry + direct peer connect)
+   SOLDIER ARENA — Ultimate v6
+   - Direct PeerJS connection (predictable IDs)
+   - Fixed multiplayer: PC↔PC, Mobile↔Mobile, PC↔Mobile
    - Name change option
-   - Menu: card on the LEFT, expandable CUSTOMIZE panel
    ========================================================= */
 'use strict';
+
+/* PeerJS config with STUN servers for NAT traversal */
+const PEER_CONFIG = {
+  debug: 0,
+  config: {
+    iceServers: [
+      { urls: 'stun:stun.l.google.com:19302' },
+      { urls: 'stun:stun1.l.google.com:19302' },
+      { urls: 'stun:stun2.l.google.com:19302' },
+      { urls: 'stun:stun3.l.google.com:19302' },
+      { urls: 'stun:stun4.l.google.com:19302' }
+    ]
+  }
+};
 
 const cv = document.getElementById('game');
 const ctx = cv.getContext('2d');
 const W = cv.width, H = cv.height;
 const WORLD_W = 2400, WORLD_H = 1350;
 
-/* HELPERS */
 function escapeHtml(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function clampNumber(v, min, max, fallback){ const n = Number(v); if (!isFinite(n)) return fallback; return n < min ? min : n > max ? max : n; }
 function clampStr(s, max){ s = String(s == null ? '' : s); return s.length > max ? s.slice(0, max) : s; }
@@ -644,7 +631,6 @@ function dist(a,b,c,d){ return Math.hypot(a-c,b-d); }
 function clamp(v,a,b){ return v<a?a:v>b?b:v; }
 function randomRange(a,b){ return a + Math.random()*(b-a); }
 
-/* CONFIG */
 const WORLD_SPAWNS = [
   {x:170,y:170},{x:WORLD_W-170,y:170},{x:170,y:WORLD_H-170},{x:WORLD_W-170,y:WORLD_H-170},
   {x:WORLD_W/2,y:170},{x:WORLD_W/2,y:WORLD_H-170},{x:170,y:WORLD_H/2},{x:WORLD_W-170,y:WORLD_H/2},
@@ -692,8 +678,7 @@ const COLOR_PALETTE = [
   '#ffab6b','#6bfff5','#f56bff','#b0ff6b','#6b8aff'
 ];
 
-/* SETTINGS */
-const SETTINGS_KEY = 'soldierArena.settings.ultimate.v5';
+const SETTINGS_KEY = 'soldierArena.settings.ultimate.v6';
 const defaultSettings = {
   autoRotate: true, deviceMode: 'auto',
   playerColor: '#4ea1ff',
@@ -765,7 +750,6 @@ function shade(hex, amt){
   return '#' + ((1<<24) + (r<<16) + (g<<8) + b).toString(16).slice(1);
 }
 
-/* DEVICE */
 let isMobile = false;
 function detectDevice(){
   const touch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
@@ -822,9 +806,8 @@ function screenToWrapLocal(clientX, clientY){
   return { x: sx, y: sy };
 }
 
-/* NAME */
 let myName = '';
-const NAME_KEY = 'soldierArena.name.ultimate.v5';
+const NAME_KEY = 'soldierArena.name.ultimate.v6';
 function loadSavedName(){ try { return localStorage.getItem(NAME_KEY) || ''; } catch(e){ return ''; } }
 function saveName(n){ try { localStorage.setItem(NAME_KEY, n); } catch(e){} }
 function sanitizeName(raw){
@@ -849,7 +832,6 @@ function showNameScreen(){
   document.getElementById('online').classList.add('hidden');
   document.getElementById('over').classList.add('hidden');
   if (myName) nameInput.value = myName;
-  // Show cancel button only if we already have a name
   const cancelBtn = document.getElementById('cancelNameBtn');
   if (cancelBtn) cancelBtn.style.display = myName ? 'block' : 'none';
   setTimeout(() => nameInput.focus(), 100);
@@ -883,7 +865,6 @@ function updateNameDisplays(){
   if (on) on.textContent = myName || '—';
 }
 
-/* INPUT */
 const keys = Object.create(null);
 const BLOCK = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space','Slash','Period','Comma','Quote'];
 addEventListener('keydown', e => {
@@ -914,7 +895,6 @@ addEventListener('mouseup', e => {
 });
 cv.addEventListener('contextmenu', e => e.preventDefault());
 
-/* STATE */
 let state = 'menu';
 let mode = 'solo';
 let walls = [];
@@ -936,7 +916,6 @@ let pendingInput = { mx:0, my:0, angle:0, shoot:false, grenade:false, knife:fals
 let gameMode = 'ffa';
 let maxPlayers = 8;
 
-/* AUDIO */
 let actx = null;
 function initAudio(){ if(!actx){ try{ actx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
 function beep(freq, dur, type='square', vol=0.05, slide=0){
@@ -963,7 +942,6 @@ const SFX = {
   chat: ()=>beep(880,0.08,'sine',0.04,200)
 };
 
-/* CHAT */
 const QUICK_MESSAGES = ['gg','lol','nice!','boom 💥','😂','wait...','help!','well played'];
 const CHAT_COOLDOWN = 800;
 let lastChatTime = 0;
@@ -1060,7 +1038,6 @@ function spawnChatBubble(p, text, color){
   chatBubbles.push({ playerId: p.id, text, color, life: 2.2 });
 }
 
-/* VOICE */
 let voiceStream = null, voiceCalls = {};
 async function startTalking(){
   if (!settings.voiceChat) return;
@@ -1100,7 +1077,6 @@ function setupVoiceReceiver(){
   });
 }
 
-/* TOAST */
 function toast(text, type){
   const el = document.getElementById('toastContainer');
   if (!el) return;
@@ -1112,7 +1088,6 @@ function toast(text, type){
   while (el.children.length > 5){ el.removeChild(el.firstChild); }
 }
 
-/* MAP */
 function addBuilding(walls, x, y, w, h, t){
   walls.push({x, y, w:w*0.6, h:t}); walls.push({x:x+w*0.4, y:y+h-t, w:w*0.6, h:t});
   walls.push({x, y, w:t, h:h*0.55}); walls.push({x, y:y+h*0.55, w:t, h:h*0.45});
@@ -1191,7 +1166,6 @@ function addParticles(x,y,n,color,speed=260,life=0.5,size=3){
   }
 }
 
-/* ============ CANVAS WEARABLES ============ */
 function drawWearable(c, wearable, cx, cy, r){
   if (!wearable || wearable === 'none') return;
   c.save();
@@ -1311,7 +1285,6 @@ function drawGun(c, gunId, kick){
   }
 }
 
-/* PLAYER */
 function makePlayer(id, isBot, name, color, team, shape, wearable, gun, grenadeType){
   const sp = WORLD_SPAWNS[id % WORLD_SPAWNS.length];
   return {
@@ -1357,7 +1330,6 @@ function isFriendly(a, b){
   return a.team === b.team;
 }
 
-/* POWERUPS */
 function spawnPowerUp(){
   const t = POWER_TYPES[Math.floor(Math.random() * POWER_TYPES.length)];
   let x, y, tries = 0;
@@ -1376,7 +1348,6 @@ function pickupPowerUp(p, pu){
   toast(`${p === getLocalPlayer() ? 'You got' : p.name + ' got'} ${t.name}!`, 'good');
 }
 
-/* COMBAT */
 function startReload(p){
   if (p.reloadT > 0 || p.mag >= p.magSize) return;
   p.reloadT = 1.5;
@@ -1517,7 +1488,6 @@ function showMVPBoard(){
 }
 function hideMVPBoard(){ document.getElementById('mvpBoard').classList.remove('show'); }
 
-/* CAMERA */
 const cam = { x:0, y:0 };
 function updateCamera(){
   if (state !== 'play') return;
@@ -1533,7 +1503,6 @@ function getLocalPlayer(){
 }
 function screenToWorld(sx, sy){ return { x: sx + cam.x, y: sy + cam.y }; }
 
-/* MOVEMENT */
 function move(p, mx, my, dt){
   const now = performance.now();
   let speedMult = 1.0;
@@ -1602,7 +1571,6 @@ function botUpdate(p, dt){
   if (bestD < 50) knife(p);
 }
 
-/* NET SERIALIZE */
 function serializeState(){
   const now = performance.now();
   return {
@@ -1644,33 +1612,24 @@ function applyNetState(s){
   if (s.winner >= 0 && state === 'play'){ winner = players.find(p => p.id === s.winner); if (winner) endMatch(winner); }
 }
 
-/* ============ SIMPLE & RELIABLE MULTIPLAYER REGISTRY ============ */
-const REGISTRY_ID = 'soldier-arena-registry-v5-stable';
+/* ============ SIMPLE REGISTRY (only for lobby browser) ============ */
+const REGISTRY_ID = 'soldier-arena-registry-v6-stable-001';
 let registryPeer = null;
 let registryConn = null;
 let isRegistryHost = false;
-const registryGames = {}; // peerId -> game info
+const registryGames = {};
 
 function startRegistryServer(){
   if (isRegistryHost) return;
   isRegistryHost = true;
-  
-  const rp = new Peer(REGISTRY_ID, { debug: 0 });
-  
-  rp.on('open', () => {
-    console.log('✅ Registry server ONLINE:', REGISTRY_ID);
-  });
-  
+  const rp = new Peer(REGISTRY_ID, PEER_CONFIG);
+  rp.on('open', () => console.log('✅ Registry server ONLINE'));
   rp.on('connection', (conn) => {
-    console.log('Registry connection from:', conn.peer);
-    
     conn.on('data', (data) => {
       if (!data || typeof data !== 'object') return;
-      
-      if (data.type === 'register') {
+      if (data.type === 'register'){
         registryGames[data.peerId] = {
-          peerId: data.peerId,
-          roomCode: data.roomCode,
+          peerId: data.peerId, roomCode: data.roomCode,
           name: clampStr(sanitizeName(data.name) || 'Unknown', 14),
           color: /^#[0-9a-fA-F]{6}$/.test(data.color) ? data.color : '#4ea1ff',
           mode: data.mode === 'team' ? 'team' : 'ffa',
@@ -1678,172 +1637,81 @@ function startRegistryServer(){
           playerCount: clampNumber(data.playerCount, 1, 20, 1),
           lastSeen: Date.now()
         };
-        broadcastRegistryList();
-      }
-      else if (data.type === 'update') {
-        if (registryGames[data.peerId]) {
+        broadcastList();
+      } else if (data.type === 'update'){
+        if (registryGames[data.peerId]){
           registryGames[data.peerId].playerCount = clampNumber(data.playerCount, 1, 20, 1);
           registryGames[data.peerId].lastSeen = Date.now();
-          broadcastRegistryList();
+          broadcastList();
         }
-      }
-      else if (data.type === 'unregister') {
+      } else if (data.type === 'unregister'){
         delete registryGames[data.peerId];
-        broadcastRegistryList();
-      }
-      else if (data.type === 'query') {
-        try {
-          conn.send({ type: 'registry-list', list: getActiveGames() });
-        } catch(e){}
+        broadcastList();
+      } else if (data.type === 'query'){
+        try { conn.send({ type:'registry-list', list: getActive() }); } catch(e){}
       }
     });
   });
-  
   rp.on('error', (err) => {
-    if (err && err.type === 'unavailable-id') {
-      console.log('Registry already exists — acting as client');
-      isRegistryHost = false;
-      try { rp.destroy(); } catch(e){}
-    } else {
-      console.warn('Registry error:', err);
-      isRegistryHost = false;
-    }
+    if (err && err.type === 'unavailable-id'){ isRegistryHost = false; try { rp.destroy(); }catch(e){} }
   });
-  
-  // Cleanup stale games every 10s
   setInterval(() => {
-    const now = Date.now();
-    let changed = false;
-    for (const pid in registryGames) {
-      if (now - registryGames[pid].lastSeen > 30000) {
-        delete registryGames[pid];
-        changed = true;
-      }
-    }
-    if (changed) broadcastRegistryList();
+    const now = Date.now(); let changed = false;
+    for (const pid in registryGames){ if (now - registryGames[pid].lastSeen > 30000){ delete registryGames[pid]; changed = true; } }
+    if (changed) broadcastList();
   }, 10000);
-  
-  function getActiveGames() {
-    const now = Date.now();
-    return Object.values(registryGames).filter(g => now - g.lastSeen < 30000);
-  }
-  
-  function broadcastRegistryList() {
-    const list = getActiveGames();
-    // Broadcast to all connected peers
-    try {
-      if (rp.connections) {
-        Object.values(rp.connections).forEach(conn => {
-          try { conn.send({ type: 'registry-list', list }); } catch(e){}
-        });
-      }
-    } catch(e){}
+  function getActive(){ const now = Date.now(); return Object.values(registryGames).filter(g => now - g.lastSeen < 30000); }
+  function broadcastList(){
+    const list = getActive();
+    try { if (rp.connections) Object.values(rp.connections).forEach(c => { try { c.send({ type:'registry-list', list }); } catch(e){} }); } catch(e){}
   }
 }
-
-function initRegistry(){
-  startRegistryServer();
-}
+function initRegistry(){ startRegistryServer(); }
 
 function registerHost(){
   if (netMode !== 'host' || !roomCode || !peer || !peer.id) return;
   const myPeerId = peer.id;
-  
-  // Clean up old registry connection
   if (registryConn) { try { registryConn.close(); } catch(e){} registryConn = null; }
   if (registryPeer) { try { registryPeer.destroy(); } catch(e){} registryPeer = null; }
-  
-  registryPeer = new Peer(null, { debug: 0 });
-  
+  registryPeer = new Peer(null, PEER_CONFIG);
   registryPeer.on('open', () => {
-    console.log('Registry client connected');
     registryConn = registryPeer.connect(REGISTRY_ID, { reliable: true });
-    
     registryConn.on('open', () => {
-      console.log('✅ Registered to registry');
       registryConn.send({
-        type: 'register',
-        peerId: myPeerId,
-        roomCode: roomCode,
-        name: myName,
-        color: settings.playerColor,
-        mode: gameMode,
-        maxPlayers: maxPlayers,
-        playerCount: players.length
+        type:'register', peerId: myPeerId, roomCode: roomCode,
+        name: myName, color: settings.playerColor,
+        mode: gameMode, maxPlayers, playerCount: players.length
       });
-      
-      // Heartbeat every 3s
       const hb = setInterval(() => {
-        if (!registryConn || !registryConn.open || netMode !== 'host') {
-          clearInterval(hb);
-          return;
-        }
-        try {
-          registryConn.send({
-            type: 'update',
-            peerId: myPeerId,
-            playerCount: players.length,
-            mode: gameMode
-          });
-        } catch(e){}
+        if (!registryConn || !registryConn.open || netMode !== 'host'){ clearInterval(hb); return; }
+        try { registryConn.send({ type:'update', peerId: myPeerId, playerCount: players.length, mode: gameMode }); } catch(e){}
       }, 3000);
-      
-      registryConn.on('close', () => {
-        clearInterval(hb);
-        console.log('Registry connection closed');
-      });
+      registryConn.on('close', () => clearInterval(hb));
     });
-    
-    registryConn.on('error', (e) => console.warn('Registry conn error', e));
   });
-  
-  registryPeer.on('error', (e) => console.warn('Registry peer error', e));
 }
-
 function unregisterHost(){
-  if (registryConn && registryConn.open) {
-    try { registryConn.send({ type: 'unregister', peerId: peer ? peer.id : '' }); } catch(e){}
-  }
-  if (registryPeer) { try { registryPeer.destroy(); } catch(e){} registryPeer = null; }
+  if (registryConn && registryConn.open){ try { registryConn.send({ type:'unregister', peerId: peer ? peer.id : '' }); } catch(e){} }
+  if (registryPeer){ try { registryPeer.destroy(); }catch(e){} registryPeer = null; }
   registryConn = null;
 }
-
 function queryRegistry(callback){
-  const qp = new Peer(null, { debug: 0 });
+  const qp = new Peer(null, PEER_CONFIG);
   let done = false;
-  
-  const finish = (list) => {
-    if (done) return;
-    done = true;
-    try { qp.destroy(); } catch(e){}
-    callback(list || []);
-  };
-  
-  const timeout = setTimeout(() => finish([]), 4000);
-  
+  const finish = (list) => { if (done) return; done = true; try { qp.destroy(); }catch(e){} callback(list || []); };
+  const timeout = setTimeout(() => finish([]), 5000);
   qp.on('open', () => {
     const conn = qp.connect(REGISTRY_ID, { reliable: true });
-    
-    conn.on('open', () => {
-      try { conn.send({ type: 'query' }); } catch(e){ clearTimeout(timeout); finish([]); }
-    });
-    
-    conn.on('data', (data) => {
-      if (data && data.type === 'registry-list') {
-        clearTimeout(timeout);
-        finish(Array.isArray(data.list) ? data.list : []);
-      }
-    });
-    
+    conn.on('open', () => { try { conn.send({ type:'query' }); } catch(e){ clearTimeout(timeout); finish([]); } });
+    conn.on('data', (data) => { if (data && data.type === 'registry-list'){ clearTimeout(timeout); finish(Array.isArray(data.list) ? data.list : []); } });
     conn.on('error', () => { clearTimeout(timeout); finish([]); });
   });
-  
   qp.on('error', () => { clearTimeout(timeout); finish([]); });
 }
 
 /* FRIENDS */
 let myFriends = [];
-const FRIENDS_KEY = 'soldierArena.friends.ultimate.v5';
+const FRIENDS_KEY = 'soldierArena.friends.ultimate.v6';
 function loadFriends(){ try { const raw = localStorage.getItem(FRIENDS_KEY); if (raw){ const d = safeJSONParse(raw, []); if (Array.isArray(d)) myFriends = d.slice(0, 50); } } catch(e){} }
 function saveFriends(){ try { localStorage.setItem(FRIENDS_KEY, JSON.stringify(myFriends)); } catch(e){} }
 function isFriend(peerId){ return myFriends.some(f => f.peerId === peerId); }
@@ -1855,7 +1723,6 @@ function renderFriendsList(){
   el.innerHTML = myFriends.map(f => `<li><span style="color:${escapeHtml(f.color)}">●</span><span class="fname">${escapeHtml(f.name)}</span><button onclick="removeFriend('${escapeHtml(f.peerId)}')" class="danger">REMOVE</button></li>`).join('');
 }
 window.removeFriend = removeFriend; window.addFriend = addFriend;
-
 function showFriendsPanel(){
   document.getElementById('onlineChoice').style.display = 'none';
   document.getElementById('hostLobby').style.display = 'none';
@@ -1873,10 +1740,7 @@ function hideFriendsPanel(){
 function refreshNearbyPlayers(){
   const el = document.getElementById('nearbyPlayersList'); if (!el) return;
   el.innerHTML = '<li class="empty-msg">Scanning…</li>';
-  queryRegistry((list) => {
-    const filtered = list.filter(g => g.name !== myName);
-    renderNearby(filtered);
-  });
+  queryRegistry((list) => { renderNearby(list.filter(g => g.name !== myName)); });
 }
 function renderNearby(list){
   const el = document.getElementById('nearbyPlayersList'); if (!el) return;
@@ -1891,16 +1755,14 @@ function showLobbyBrowser(){
   document.getElementById('clientLobby').style.display = 'none';
   document.getElementById('friendsPanel').style.display = 'none';
   const el = document.getElementById('lobbyBrowser');
-  el.classList.remove('hidden');
-  el.style.display = 'flex';
+  el.classList.remove('hidden'); el.style.display = 'flex';
   setLobbyBrowserStatus('Scanning…', 'warn');
   document.getElementById('lobbyBrowserList').innerHTML = '<li class="empty-msg">Scanning…</li>';
   refreshLobbyBrowser();
 }
 function hideLobbyBrowser(){
   const el = document.getElementById('lobbyBrowser');
-  el.classList.add('hidden');
-  el.style.display = 'none';
+  el.classList.add('hidden'); el.style.display = 'none';
   document.getElementById('onlineChoice').style.display = 'block';
 }
 function setLobbyBrowserStatus(txt, type){
@@ -1916,14 +1778,10 @@ function setLobbyBrowserStatus(txt, type){
 function refreshLobbyBrowser(){
   setLobbyBrowserStatus('Scanning…', 'warn');
   queryRegistry((list) => {
-    // Filter out our own game
     const filtered = list.filter(g => g.roomCode !== roomCode);
     renderLobbyBrowserList(filtered);
-    if (filtered.length === 0) {
-      setLobbyBrowserStatus('No public games found', 'warn');
-    } else {
-      setLobbyBrowserStatus(`${filtered.length} game${filtered.length > 1 ? 's' : ''} found`, 'good');
-    }
+    if (filtered.length === 0) setLobbyBrowserStatus('No public games found', 'warn');
+    else setLobbyBrowserStatus(`${filtered.length} game${filtered.length > 1 ? 's' : ''} found`, 'good');
   });
 }
 function renderLobbyBrowserList(list){
@@ -1935,85 +1793,13 @@ function renderLobbyBrowserList(list){
     <span style="font-weight:bold;">${escapeHtml(g.name)}</span>
     <span style="color:#8fa3bf;">(${g.playerCount}/${g.maxPlayers})</span>
     <span style="font-size:9px;background:${g.mode === 'team' ? '#ff5b5b' : '#4ea1ff'};color:#000;padding:1px 4px;border-radius:3px;font-weight:bold;">${g.mode === 'team' ? 'TEAM' : 'FFA'}</span>
-    <button class="primary" onclick="joinFromBrowser('${escapeHtml(g.peerId)}','${escapeHtml(g.roomCode || '')}')" style="min-width:auto;padding:2px 8px;font-size:10px;margin-left:auto;">JOIN</button></li>`).join('');
+    <button class="primary" onclick="joinFromBrowser('${escapeHtml(g.roomCode || '')}')" style="min-width:auto;padding:2px 8px;font-size:10px;margin-left:auto;">JOIN</button></li>`).join('');
 }
-function joinFromBrowser(peerId, roomCodeHint){
-  if (typeof peerId !== 'string') return;
-  if (!myName){ showNameScreen(); return; }
-  initAudio();
-  if (netMode !== 'off') cleanupNetwork();
-  
-  netMode = 'client';
-  document.getElementById('onlineChoice').style.display = 'none';
-  document.getElementById('hostLobby').classList.add('hidden');
-  document.getElementById('clientLobby').style.display = 'flex';
-  document.getElementById('clientLobby').classList.remove('hidden');
-  document.getElementById('lobbyBrowser').style.display = 'none';
-  document.getElementById('friendsPanel').style.display = 'none';
-  document.getElementById('clientCode').textContent = roomCodeHint || 'Direct';
-  
-  const statusEl = document.getElementById('clientModeInfo');
-  if (statusEl) statusEl.textContent = 'Connecting…';
-  
-  peer = new Peer({ debug: 0 });
-  setupVoiceReceiver();
-  
-  let connected = false;
-  const connectTimeout = setTimeout(() => {
-    if (!connected) { toast('Connection timeout', 'bad'); toMenu(); }
-  }, 12000);
-  
-  peer.on('open', () => {
-    hostConn = peer.connect(peerId, { reliable: true });
-    
-    hostConn.on('open', () => {
-      connected = true;
-      clearTimeout(connectTimeout);
-      if (statusEl) statusEl.textContent = 'Connected! ✓';
-      try {
-        hostConn.send({
-          type: 'hello',
-          name: myName,
-          color: settings.playerColor,
-          shape: settings.playerShape,
-          wearable: settings.playerWearable,
-          gun: settings.playerGun,
-          grenadeType: settings.playerGrenade
-        });
-      } catch(e){}
-    });
-    
-    hostConn.on('data', (data) => {
-      if (!data || typeof data !== 'object') return;
-      if (data.type === 'welcome') {
-        myPlayerId = clampNumber(data.playerId, 1, 20, 1);
-        gameMode = data.mode === 'team' ? 'team' : 'ffa';
-      }
-      else if (data.type === 'nameTaken'){ toast('Name taken', 'warn'); toMenu(); }
-      else if (data.type === 'full'){ toast('Game full', 'warn'); toMenu(); }
-      else if (data.type === 'lobby'){
-        const list = document.getElementById('clientPlayers');
-        const arr = Array.isArray(data.players) ? data.players : [];
-        gameMode = data.mode === 'team' ? 'team' : 'ffa';
-        list.innerHTML = arr.map(p => `<li><span style="color:${escapeHtml(p.color)}">●</span><span>${escapeHtml(p.name)}</span>${p.isHost ? '<span class="host-tag">HOST</span>' : ''}${p.isBot ? '<span class="bot-tag">BOT</span>' : ''}${p.name === myName && !p.isBot ? '<span class="you-tag">YOU</span>' : ''}</li>`).join('');
-      }
-      else if (data.type === 'start') startClientMatch(data.mode);
-      else if (data.type === 'state') applyNetState(data.state);
-      else if (data.type === 'chat'){ const pid = clampNumber(data.playerId, 0, 20, 0); handleChat(pid, data.text); }
-    });
-    
-    hostConn.on('close', () => {
-      if (state === 'play'){ toast('Host disconnected', 'bad'); toMenu(); }
-      else { toast('Closed', 'warn'); toMenu(); }
-    });
-    
-    hostConn.on('error', (e) => console.warn('Host conn error', e));
-  });
-  
-  peer.on('error', (err) => {
-    console.error(err);
-    if (!connected) { clearTimeout(connectTimeout); toast('Connection failed', 'bad'); setTimeout(() => toMenu(), 1000); }
-  });
+function joinFromBrowser(code){
+  if (typeof code !== 'string' || code.length < 4) return;
+  document.getElementById('joinCodeInput').value = code;
+  hideLobbyBrowser();
+  joinOnlineGame();
 }
 window.joinFromBrowser = joinFromBrowser;
 
@@ -2021,12 +1807,8 @@ window.joinFromBrowser = joinFromBrowser;
 function toggleCustomizePanel(){
   const panel = document.getElementById('customizePanel');
   if (!panel) return;
-  if (panel.classList.contains('open')){
-    panel.classList.remove('open');
-  } else {
-    buildCustomizePanel();
-    panel.classList.add('open');
-  }
+  if (panel.classList.contains('open')) panel.classList.remove('open');
+  else { buildCustomizePanel(); panel.classList.add('open'); }
 }
 function buildCustomizePanel(){
   const cs = document.getElementById('cpColorScroll');
@@ -2127,7 +1909,7 @@ function buildCustomizePanel(){
   }
 }
 
-/* SETTINGS */
+/* SETTINGS UI */
 function showSettings(){
   document.getElementById('menu').classList.add('hidden');
   document.getElementById('settings').classList.remove('hidden');
@@ -2444,7 +2226,6 @@ function updatePowerLegend(){
     </div>`).join('');
 }
 
-/* UPDATE */
 function update(dt){
   if (state !== 'play') return;
   if (netMode === 'client'){
@@ -2510,7 +2291,7 @@ function update(dt){
 }
 function updateChatBubbles(dt){ for (let i = chatBubbles.length-1; i >= 0; i--){ chatBubbles[i].life -= dt; if (chatBubbles[i].life <= 0) chatBubbles.splice(i,1); } }
 
-/* HOST */
+/* ============ HOST with predictable peer ID ============ */
 function hostOnlineGame(){
   if (!myName){ showNameScreen(); return; }
   initAudio();
@@ -2526,37 +2307,44 @@ function hostOnlineGame(){
   document.getElementById('friendsPanel').style.display = 'none';
   document.getElementById('maxPlayersInput').value = maxPlayers;
   updateModeButtons();
-  document.getElementById('publicStatus').textContent = '✓ Public — visible to all devices';
-  document.getElementById('publicStatus').style.color = '#4dff8a';
+  document.getElementById('publicStatus').textContent = '⏳ Starting host…';
+  document.getElementById('publicStatus').style.color = '#ffd23f';
   
   players = [ makePlayer(0, false, myName, settings.playerColor, 0, settings.playerShape, settings.playerWearable, settings.playerGun, settings.playerGrenade) ];
   nextPlayerId = 1;
   clients = [];
   netMode = 'host';
   
-  peer = new Peer({ debug: 0 });
+  const hostPeerId = 'soldier-arena-' + roomCode;
+  console.log('[HOST] Creating peer:', hostPeerId);
+  peer = new Peer(hostPeerId, PEER_CONFIG);
   setupVoiceReceiver();
   
   peer.on('open', (id) => {
-    console.log('Host peer ID:', id);
+    console.log('[HOST] Online with ID:', id);
     toast('Host ready! Code: ' + roomCode, 'good');
-    // Register to registry after peer opens
-    setTimeout(() => registerHost(), 500);
+    document.getElementById('publicStatus').textContent = '✓ Public — visible to all devices';
+    document.getElementById('publicStatus').style.color = '#4dff8a';
+    setTimeout(() => registerHost(), 300);
   });
   
   peer.on('error', (err) => {
-    console.error('Host peer error:', err);
+    console.error('[HOST] Error:', err);
     if (err && err.type === 'unavailable-id') {
-      toast('ID conflict, retrying…', 'warn');
+      toast('Code conflict, retrying…', 'warn');
       cleanupNetwork();
       setTimeout(hostOnlineGame, 800);
+    } else if (err && err.type === 'network') {
+      toast('Network error — check connection', 'bad');
+      document.getElementById('publicStatus').textContent = '✗ Network error';
+      document.getElementById('publicStatus').style.color = '#ff5b5b';
     } else {
       toast('Host error: ' + (err.type || 'unknown'), 'bad');
     }
   });
   
   peer.on('connection', (conn) => {
-    console.log('Incoming connection from:', conn.peer);
+    console.log('[HOST] Connection from:', conn.peer);
     
     conn.on('open', () => {
       if (players.length >= maxPlayers){
@@ -2603,6 +2391,7 @@ function hostOnlineGame(){
           broadcastLobby();
           addChatMessage({ system: true, text: `${wanted} joined` });
           toast(`${wanted} joined`, 'good');
+          console.log('[HOST] Player joined:', wanted, 'ID:', pid);
         }
         else if (data.type === 'input') {
           const c = clients.find(c => c.conn === conn);
@@ -2642,6 +2431,7 @@ function hostOnlineGame(){
   
   broadcastLobby();
 }
+
 function updateModeButtons(){
   const ffa = document.getElementById('modeFFA');
   const team = document.getElementById('modeTeam');
@@ -2708,12 +2498,14 @@ function startOnlineMatch(){
   chatMessages.length = 0; chatMessages.push({ system:true, text:'Match started!' });
   refreshTouchUI(); applyTouchLayout();
 }
+
+/* ============ JOIN with direct peer ID ============ */
 function joinOnlineGame(){
   if (!myName){ showNameScreen(); return; }
   initAudio();
   
   const code = document.getElementById('joinCodeInput').value.trim().toUpperCase();
-  if (code.length < 4 || code.length > 8){ toast('Invalid code', 'warn'); return; }
+  if (code.length < 4 || code.length > 8){ toast('Invalid code (4-8 chars)', 'warn'); return; }
   
   if (netMode !== 'off') cleanupNetwork();
   netMode = 'client';
@@ -2728,125 +2520,123 @@ function joinOnlineGame(){
   document.getElementById('friendsPanel').style.display = 'none';
   
   const statusEl = document.getElementById('clientModeInfo');
-  if (statusEl) statusEl.textContent = 'Looking up game…';
+  if (statusEl) statusEl.textContent = 'Connecting…';
   
-  // Step 1: Query registry to find actual peerId from room code
-  queryRegistry((list) => {
-    const game = list.find(g => g.roomCode === code);
-    if (!game) {
-      toast('Game not found in registry', 'bad');
-      if (statusEl) statusEl.textContent = 'Game not found. Make sure host is online.';
-      setTimeout(() => toMenu(), 2000);
-      return;
+  const hostPeerId = 'soldier-arena-' + code;
+  console.log('[CLIENT] Connecting to:', hostPeerId);
+  
+  peer = new Peer(null, PEER_CONFIG);
+  setupVoiceReceiver();
+  
+  let connected = false;
+  let attempts = 0;
+  const MAX_ATTEMPTS = 4;
+  
+  const connectTimeout = setTimeout(() => {
+    if (!connected) {
+      toast('Connection timeout — host may be offline', 'bad');
+      if (statusEl) statusEl.textContent = 'Timeout';
+      setTimeout(() => toMenu(), 1500);
     }
-    connectToHost(game.peerId);
+  }, 25000);
+  
+  peer.on('open', (id) => {
+    console.log('[CLIENT] Peer online:', id);
+    tryConnect();
   });
   
-  function connectToHost(targetPeerId) {
-    if (statusEl) statusEl.textContent = 'Connecting…';
-    
-    peer = new Peer({ debug: 0 });
-    setupVoiceReceiver();
-    
-    let connected = false;
-    let attempts = 0;
-    const MAX_ATTEMPTS = 3;
-    
-    const connectTimeout = setTimeout(() => {
-      if (!connected) {
-        toast('Connection timeout', 'bad');
-        toMenu();
-      }
-    }, 15000);
-    
-    peer.on('open', () => {
-      tryConnect();
-    });
-    
-    peer.on('error', (err) => {
-      console.error('Client peer error:', err);
-      if (!connected && attempts < MAX_ATTEMPTS) {
-        setTimeout(tryConnect, 800);
-      } else if (!connected) {
+  peer.on('error', (err) => {
+    console.error('[CLIENT] Peer error:', err);
+    if (err && err.type === 'peer-unavailable') {
+      if (!connected && attempts >= MAX_ATTEMPTS) {
         clearTimeout(connectTimeout);
-        toast('Connection failed', 'bad');
-        setTimeout(() => toMenu(), 1000);
+        toast('Room not found. Host offline or wrong code.', 'bad');
+        if (statusEl) statusEl.textContent = 'Room not found';
+        setTimeout(() => toMenu(), 1500);
+      } else if (!connected) {
+        setTimeout(tryConnect, 1200);
       }
-    });
+    } else if (err && err.type === 'network') {
+      toast('Network error', 'bad');
+    }
+  });
+  
+  function tryConnect(){
+    if (connected) return;
+    attempts++;
+    if (statusEl) statusEl.textContent = `Connecting… (${attempts}/${MAX_ATTEMPTS})`;
+    console.log('[CLIENT] Attempt', attempts);
     
-    function tryConnect() {
-      if (connected) return;
-      attempts++;
-      if (statusEl) statusEl.textContent = `Connecting… (${attempts}/${MAX_ATTEMPTS})`;
+    try {
+      if (hostConn) { try { hostConn.close(); } catch(e){} }
+      hostConn = peer.connect(hostPeerId, { reliable: true });
       
-      try {
-        if (hostConn) { try { hostConn.close(); } catch(e){} }
-        hostConn = peer.connect(targetPeerId, { reliable: true });
-        
-        const connTimeout = setTimeout(() => {
-          if (!connected && attempts < MAX_ATTEMPTS) {
-            tryConnect();
-          } else if (!connected) {
-            clearTimeout(connectTimeout);
-            toast('Host not responding', 'bad');
-            setTimeout(() => toMenu(), 1000);
-          }
-        }, 5000);
-        
-        hostConn.on('open', () => {
-          connected = true;
-          clearTimeout(connTimeout);
+      const connTimeout = setTimeout(() => {
+        if (!connected && attempts < MAX_ATTEMPTS) tryConnect();
+        else if (!connected) {
           clearTimeout(connectTimeout);
-          if (statusEl) statusEl.textContent = 'Connected! ✓';
-          try {
-            hostConn.send({
-              type: 'hello',
-              name: myName,
-              color: settings.playerColor,
-              shape: settings.playerShape,
-              wearable: settings.playerWearable,
-              gun: settings.playerGun,
-              grenadeType: settings.playerGrenade
-            });
-          } catch(e){}
-        });
-        
-        hostConn.on('data', (data) => {
-          if (!data || typeof data !== 'object') return;
-          if (data.type === 'welcome') {
-            myPlayerId = clampNumber(data.playerId, 1, 20, 1);
-            gameMode = data.mode === 'team' ? 'team' : 'ffa';
-          }
-          else if (data.type === 'nameTaken'){ toast('Name taken', 'warn'); toMenu(); }
-          else if (data.type === 'full'){ toast('Game full', 'warn'); toMenu(); }
-          else if (data.type === 'lobby'){
-            const list = document.getElementById('clientPlayers');
-            const arr = Array.isArray(data.players) ? data.players : [];
-            gameMode = data.mode === 'team' ? 'team' : 'ffa';
-            maxPlayers = clampNumber(data.maxPlayers, 2, 20, 8);
-            if (statusEl) statusEl.textContent = `Mode: ${gameMode === 'team' ? 'TEAM' : 'FFA'} • Max: ${maxPlayers}`;
-            list.innerHTML = arr.length === 0 ? '<li class="empty-msg">Waiting…</li>' :
-              arr.map(p => `<li><span style="color:${escapeHtml(p.color)}">●</span><span>${escapeHtml(p.name)}</span>${p.isHost ? '<span class="host-tag">HOST</span>' : ''}${p.isBot ? '<span class="bot-tag">BOT</span>' : ''}${p.name === myName && !p.isBot ? '<span class="you-tag">YOU</span>' : ''}${p.team === 1 ? '<span class="team-a-tag">BLUE</span>' : ''}${p.team === 2 ? '<span class="team-b-tag">RED</span>' : ''}</li>`).join('');
-          }
-          else if (data.type === 'modeChange') gameMode = data.mode === 'team' ? 'team' : 'ffa';
-          else if (data.type === 'start') startClientMatch(data.mode);
-          else if (data.type === 'state') applyNetState(data.state);
-          else if (data.type === 'chat'){ const pid = clampNumber(data.playerId, 0, 20, 0); handleChat(pid, data.text); }
-        });
-        
-        hostConn.on('close', () => {
-          if (state === 'play'){ toast('Host disconnected', 'bad'); toMenu(); }
-          else if (netMode === 'client' && connected){ toast('Closed', 'warn'); toMenu(); }
-        });
-        
-        hostConn.on('error', (e) => console.warn('Host conn error', e));
-      } catch(e) {
-        console.error(e);
-        if (attempts < MAX_ATTEMPTS) setTimeout(tryConnect, 800);
-      }
+          toast('Host not responding', 'bad');
+          setTimeout(() => toMenu(), 1000);
+        }
+      }, 6000);
+      
+      hostConn.on('open', () => {
+        connected = true;
+        clearTimeout(connTimeout);
+        clearTimeout(connectTimeout);
+        console.log('[CLIENT] ✅ Connected!');
+        if (statusEl) statusEl.textContent = 'Connected! ✓';
+        toast('Connected!', 'good');
+        try {
+          hostConn.send({
+            type: 'hello',
+            name: myName,
+            color: settings.playerColor,
+            shape: settings.playerShape,
+            wearable: settings.playerWearable,
+            gun: settings.playerGun,
+            grenadeType: settings.playerGrenade
+          });
+        } catch(e){}
+      });
+      
+      hostConn.on('data', (data) => {
+        if (!data || typeof data !== 'object') return;
+        if (data.type === 'welcome') {
+          myPlayerId = clampNumber(data.playerId, 1, 20, 1);
+          gameMode = data.mode === 'team' ? 'team' : 'ffa';
+          console.log('[CLIENT] My player ID:', myPlayerId);
+        }
+        else if (data.type === 'nameTaken'){ toast('Name taken', 'warn'); toMenu(); }
+        else if (data.type === 'full'){ toast('Game full', 'warn'); toMenu(); }
+        else if (data.type === 'lobby'){
+          const list = document.getElementById('clientPlayers');
+          const arr = Array.isArray(data.players) ? data.players : [];
+          gameMode = data.mode === 'team' ? 'team' : 'ffa';
+          maxPlayers = clampNumber(data.maxPlayers, 2, 20, 8);
+          if (statusEl) statusEl.textContent = `Mode: ${gameMode === 'team' ? 'TEAM' : 'FFA'} • ${arr.length}/${maxPlayers}`;
+          list.innerHTML = arr.length === 0 ? '<li class="empty-msg">Waiting…</li>' :
+            arr.map(p => `<li><span style="color:${escapeHtml(p.color)}">●</span><span>${escapeHtml(p.name)}</span>${p.isHost ? '<span class="host-tag">HOST</span>' : ''}${p.isBot ? '<span class="bot-tag">BOT</span>' : ''}${p.name === myName && !p.isBot ? '<span class="you-tag">YOU</span>' : ''}${p.team === 1 ? '<span class="team-a-tag">BLUE</span>' : ''}${p.team === 2 ? '<span class="team-b-tag">RED</span>' : ''}</li>`).join('');
+        }
+        else if (data.type === 'modeChange') gameMode = data.mode === 'team' ? 'team' : 'ffa';
+        else if (data.type === 'start') startClientMatch(data.mode);
+        else if (data.type === 'state') applyNetState(data.state);
+        else if (data.type === 'chat'){ const pid = clampNumber(data.playerId, 0, 20, 0); handleChat(pid, data.text); }
+      });
+      
+      hostConn.on('close', () => {
+        if (state === 'play'){ toast('Host disconnected', 'bad'); toMenu(); }
+        else if (netMode === 'client' && connected){ toast('Closed', 'warn'); toMenu(); }
+      });
+      
+      hostConn.on('error', (e) => console.warn('[CLIENT] Host conn error', e));
+    } catch(e) {
+      console.error('[CLIENT] tryConnect error', e);
+      if (attempts < MAX_ATTEMPTS) setTimeout(tryConnect, 800);
     }
   }
 }
+
 function startClientMatch(m){
   walls = makeWalls();
   bullets = []; grenades = []; booms = []; parts = []; powerups = []; chatBubbles = [];
@@ -3048,7 +2838,6 @@ if (saved){
   showNameScreen();
 }
 
-// Start registry server (this tab will be the registry if none exists)
 setTimeout(() => { initRegistry(); }, 1000);
 
 requestAnimationFrame(loop);
